@@ -1,0 +1,8 @@
+{
+  "name": "WebsiteGM",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "turbolinks": "^5.1.1"
+  }
+}
