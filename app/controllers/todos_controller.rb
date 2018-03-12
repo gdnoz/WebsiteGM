@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:destroy]
+  before_action :set_todo, only: [:destroy, :check]
 
   def index
     @todos = Todo.all
@@ -8,6 +8,12 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
+    @todo.save
+    redirect_to todos_url
+  end
+
+  def check
+    @todo.done = !@todo.done
     @todo.save
     redirect_to todos_url
   end
@@ -25,6 +31,6 @@ class TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:name)
+      params.require(:todo).permit(:name, :done)
     end
 end
