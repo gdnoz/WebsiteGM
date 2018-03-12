@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'todos#index'
+  root 'start_page#index'
+  get 'cv', to: 'cv#index'
   get 'todos', to: 'todos#index'
   post 'todos', to: 'todos#create'
   post 'todos/:id', to: 'todos#check'
