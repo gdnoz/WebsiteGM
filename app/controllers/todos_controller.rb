@@ -1,6 +1,8 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:destroy, :check]
 
+  @edit_mode = false
+
   def index
     @todos = Todo.all
     @todo = Todo.new

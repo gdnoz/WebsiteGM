@@ -1,32 +1,30 @@
-<h1 align="center">My To-do List</h1>
+<h1 align="center">To-do List</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3 col-sm-12">
     <div class="panel panel-default">
-      <div class="panel-heading">My To-Do List</div>
       <table class="table">
         <thead> 
           <tr> 
-            <th>To-Do</th> <th>Actions</th>
+            <th>Done</th> <th>Action</th>
           </tr> 
         </thead>
         <tbody>
           <% @todos.each do |todo| %>
           <tr>
             <td scope="row">
-              <% if todo.done %>
-                Done!
-              <% else %>
-                <%= link_to 'Mark as done', todo, method: :check %>
-              <% end %>
+              <a rel="nofollow" data-method="check" href="/todos/check/<%= todo.id %>">
+                <%= check_box_tag 'done_'+todo.id.to_s, 'done', todo.done %>
+              </a>
             </td>
             <td scope="row">
               <% if todo.done %>
-                <del><%= todo.name %></del>
-              <% else %>
-                <%= todo.name %>
+                <del>
               <% end %>
+              <%= todo.name %>
             </td>
-            <td scope="row"><%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td scope="row">
+              <%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
           </tr>
           <% end %>
           <tr>
