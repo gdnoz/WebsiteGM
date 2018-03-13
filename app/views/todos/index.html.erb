@@ -30,7 +30,7 @@
           <tr>
           <%= form_for(@todo) do |f| %>
             <td scope="row"></td>
-            <td scope="row"><%= f.text_field :name, class: "form-control" %></td>
+            <td scope="row"><%= f.text_field :name, class: "form-control", :autofocus => true %></td>
             <td scope="row"><%= f.submit "Create", class: "btn btn-primary" %></td>
           <% end %>
           </tr>
