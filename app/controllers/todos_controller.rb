@@ -9,20 +9,20 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
-    @todo.save
-    redirect_to todos_url
+    # @todo = Todo.new(todo_params)
+    # @todo.save
+    # redirect_to todos_url
   end
 
   def check
-    @todo.done = !@todo.done
-    @todo.save
-    redirect_to todos_url
+    # @todo.done = !@todo.done
+    # @todo.save
+    # redirect_to todos_url
   end
 
   def destroy
-    @todo.destroy
-    redirect_to todos_url
+    # @todo.destroy
+    # redirect_to todos_url
   end
 
   private

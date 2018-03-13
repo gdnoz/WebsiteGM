@@ -12,8 +12,8 @@
           <% @todos.each do |todo| %>
           <tr>
             <td scope="row">
-              <a rel="nofollow" data-method="check" href="/todos/check/<%= todo.id %>">
-                <%= check_box_tag 'done_'+todo.id.to_s, 'done', todo.done %>
+              <a rel="nofollow" data-method="check" href="/todos/check/<%= todo.id %>" >
+                <%= check_box_tag 'done_'+todo.id.to_s, 'done', todo.done, :disabled => true %><!--Disabled pending login functionality-->
               </a>
             </td>
             <td scope="row">
@@ -23,15 +23,15 @@
               <%= todo.name %>
             </td>
             <td scope="row">
-              <%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Are you sure?' } %>
+              Delete<!--<%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Are you sure?' } %> Disabled pending login functionality-->
             </td>
           </tr>
           <% end %>
           <tr>
           <%= form_for(@todo) do |f| %>
             <td scope="row"></td>
-            <td scope="row"><%= f.text_field :name, class: "form-control", :autofocus => true %></td>
-            <td scope="row"><%= f.submit "Create", class: "btn btn-primary" %></td>
+            <td scope="row"><%= f.text_field :name, class: "form-control", :disabled => true, :autofocus => true %></td><!--Disabled pending login functionality-->
+            <td scope="row"><%= f.submit "Create", class: "btn btn-primary", :disabled => true %></td><!--Disabled pending login functionality-->
           <% end %>
           </tr>
         </tbody>
