@@ -53,3 +53,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Bootstrap-sass for style
 gem 'boostrap-sass'
+gem 'jquery-rails'
+
+# VueJS for front-end awesomeness
+gem 'vuejs-rails'

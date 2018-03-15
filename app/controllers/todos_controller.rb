@@ -1,28 +1,26 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:destroy, :check]
-
-  @edit_mode = false
+  before_action :set_todo, only: [:destroy, :update]
 
   def index
     @todos = Todo.all
     @todo = Todo.new
+    respond_to do |format|
+      format.html
+      format.json { render :json => @todos }
+    end
   end
 
   def create
-    # @todo = Todo.new(todo_params)
-    # @todo.save
-    # redirect_to todos_url
+    @todo = Todo.new(todo_params)
+    @todo.save
   end
 
-  def check
-    # @todo.done = !@todo.done
-    # @todo.save
-    # redirect_to todos_url
+  def update
+    @todo.update(todo_params)
   end
 
   def destroy
-    # @todo.destroy
-    # redirect_to todos_url
+    @todo.destroy
   end
 
   private

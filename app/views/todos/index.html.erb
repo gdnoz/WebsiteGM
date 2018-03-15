@@ -1,42 +1,42 @@
 <h1 align="center">To-do List</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3 col-sm-12">
-    <div class="panel panel-default">
+    <div id="table-todos" class="panel panel-default">
       <table class="table">
         <thead> 
           <tr> 
-            <th>Done</th> <th>Action</th>
+            <th>Done</th> <th>To-do</th> <th>Actions</th>
           </tr> 
         </thead>
         <tbody>
-          <% @todos.each do |todo| %>
-          <tr>
-            <td scope="row">
-              <a rel="nofollow" data-method="check" href="/todos/check/<%= todo.id %>" >
-                <%= check_box_tag 'done_'+todo.id.to_s, 'done', todo.done, :disabled => true %><!--Disabled pending login functionality-->
-              </a>
+          <tr v-for="todo in todos">
+            <td class="col-md-1">
+              <input type="checkbox" v-model="todo.done" @change="update(todo)"></input>
             </td>
-            <td scope="row">
-              <% if todo.done %>
-                <del>
-              <% end %>
-              <%= todo.name %>
+            <td v-if="todo.done">
+              <del>
+                {{ todo.name }}
+              </del>
             </td>
-            <td scope="row">
-              Delete<!--<%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Are you sure?' } %> Disabled pending login functionality-->
+            <td v-else>
+              <div v-if="edit_mode && edit_id == todo.id"><input type="textfield" class="form-control" v-model="todo.name" @change="update(todo)"></input></div>
+              <div v-else>{{ todo.name }}</div>
+            </td>
+            <td class="col-md-1">
+              <a v-bind:class="{ 'hidden': todo.done || (edit_mode && edit_id == todo.id) }" class="btn" @click="edit(todo)">Edit</a>
+            </td>
+            <td class="col-md-1">
+              <a class="btn btn-danger" @click="destroy(todo)">Delete</a>
             </td>
           </tr>
-          <% end %>
           <tr>
-          <%= form_for(@todo) do |f| %>
-            <td scope="row"></td>
-            <td scope="row"><%= f.text_field :name, class: "form-control", :disabled => true, :autofocus => true %></td><!--Disabled pending login functionality-->
-            <td scope="row"><%= f.submit "Create", class: "btn btn-primary", :disabled => true %></td><!--Disabled pending login functionality-->
-          <% end %>
+            <td></td>
+            <td><input type="textfield" class="form-control" placeholder="What do you need to do?" autofocus v-on:keyup.enter="create" v-model="new_todo.name"></input></td>
+            <td><a class="btn btn-primary" @click="create">Create</a></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
     </div>
-    
   </div>
 </div>

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get 'cv', to: 'cv#index'
   get 'todos', to: 'todos#index'
   post 'todos', to: 'todos#create'
-  post 'todos/check/:id', to: 'todos#check'
+  put 'todos/:id', to: 'todos#update'
   delete 'todos/:id', to: 'todos#destroy', as: :todo
 end
