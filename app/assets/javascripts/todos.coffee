@@ -15,8 +15,9 @@ $(document).on('ready', () ->
         return todo.name != ''
 
       edit: (todo) ->
-        this.edit_id = todo.id
-        this.edit_mode = true
+        if !todo.done
+          this.edit_id = todo.id
+          this.edit_mode = true
         
       update: (todo) ->
         if this.validate(todo)
