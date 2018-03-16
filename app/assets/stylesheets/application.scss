@@ -2,6 +2,33 @@
 @import "bootstrap";
 @import "font-awesome";
 
+body, html {
+    height: 100%;
+}
+
+.bg {
+    background-image: url("hike.jpg");
+
+    height: 100%;
+    padding-top: 20px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.row {
+    width: 100%;
+}
+
+.col-todo-done {
+    width: 40px;
+}
+
+.col-todo-actions {
+    width: 100px;
+}
+
 .table > tbody > tr > td {
     vertical-align: middle;
 }
