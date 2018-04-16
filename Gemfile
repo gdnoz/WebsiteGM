@@ -62,3 +62,6 @@ gem 'vuejs-rails'
 
 # Font Awesome, because it is awesome
 gem 'font-awesome-rails'
+
+# Devise for authentication
+gem 'devise'

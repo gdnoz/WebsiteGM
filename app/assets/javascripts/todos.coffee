@@ -1,4 +1,4 @@
-$(document).on('ready', () ->
+window.onload = () ->
   # Define the data model
   todo_model = new Vue(
     el: '#table-todos',
@@ -44,11 +44,10 @@ $(document).on('ready', () ->
           data: 
             todo: todo
           url: '/todos/' + todo.id
-          success: (res) ->
-            fetch_todos()
           error: (res) ->
             # Todo: Report the error!
         )
+        this.remove_id(todo.id)
         this.edit_mode = false
 
       create: () ->
@@ -64,8 +63,24 @@ $(document).on('ready', () ->
           error: (res) ->
             # Todo: Report the error!
         )
+        tmp_new_todo = { id: this.tmp_id(), name: this.new_todo.name }
+        this.todos.push(tmp_new_todo)
+
         this.new_todo.id = 0
         this.new_todo.name = ''
+
+      remove_id: (id) ->
+        for todo, i in this.todos
+          if todo.id == id
+            this.todos.splice i, 1
+            return
+
+      tmp_id: () ->
+        id = 0
+        for todo in this.todos
+          if todo.id > id
+            id = todo.id
+        return id+1
   )
 
   # Populate the data model
@@ -77,4 +92,3 @@ $(document).on('ready', () ->
     )
 
   fetch_todos()
-)

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'start_page#index'
+  root to: "start_page#index"
 
   get 'cv', to: 'cv#index'
 

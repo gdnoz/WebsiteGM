@@ -5,13 +5,14 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag params[:controller] %>
+    <%= javascript_include_tag 'application', media: 'vue' %>
   </head>
 
   <body>
     <div class="bg">
-      <p class="alert"></p>
-      <p class="notice"></p>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
   </body>
