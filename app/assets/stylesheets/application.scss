@@ -17,6 +17,21 @@ body, html {
     background-size: cover;
 }
 
+.portrait {
+    background-image: url("/images/portrait.jpg");
+
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+
+    margin-right: auto;
+    margin-left: auto;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .row {
     width: 100%;
 }
