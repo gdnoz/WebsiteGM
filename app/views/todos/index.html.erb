@@ -1,43 +1,41 @@
-<div class="bg">
-  <h1 align="center">To-do List</h1>
+<h1 align="center">To-do List</h1>
 
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-12">
-      <div id="table-todos" class="panel panel-default">
-        <table class="table table-hover table-responsive">
-          <thead> 
-            <tr> 
-              <th>Done</th> <th>To-do</th> <th>Actions</th>
-            </tr> 
-          </thead>
-          <tbody>
-            <tr v-for="todo in todos">
-              <td class="col-todo-done">
-                <input class="checkbox" type="checkbox" v-model="todo.done" @change="update(todo)"></input>
-              </td>
-              <td v-if="todo.done">
-                <del>
-                  {{ todo.name }}
-                </del>
-              </td>
-              <td v-else>
-                <div v-if="edit_mode && edit_id == todo.id"><input :id="'todo-edit-'+todo.id" type="textfield" class="form-control" v-model="todo.name" v-on:keyup.enter="update(todo)"></input></div>
-                <div v-else>{{ todo.name }}</div>
-              </td>
-              <td class="col-todo-actions">
-                <a v-if="edit_mode && edit_id == todo.id" class="btn btn-primary fa fa-save" @click="update(todo)"></a>
-                <a v-else class="btn btn-primary fa fa-edit" @click="edit(todo)" :disabled="todo.done || (edit_mode && edit_id == todo.id)"></a>
-                <a class="btn btn-danger fa fa-trash" @click="destroy(todo)"></a>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><input type="textfield" class="form-control" placeholder="What do you need to do?" autofocus v-on:keyup.enter="create" v-model="new_todo.name"></input></td>
-              <td><a class="btn btn-primary fa fa-plus" @click="create"></a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-sm-12">
+    <div id="table-todos" class="panel panel-default">
+      <table class="table table-hover table-responsive">
+        <thead> 
+          <tr> 
+            <th>Done</th> <th>To-do</th> <th>Actions</th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr v-for="todo in todos">
+            <td class="col-todo-done">
+              <input class="checkbox" type="checkbox" v-model="todo.done" @change="update(todo)"></input>
+            </td>
+            <td v-if="todo.done">
+              <del>
+                {{ todo.name }}
+              </del>
+            </td>
+            <td v-else>
+              <div v-if="edit_mode && edit_id == todo.id"><input :id="'todo-edit-'+todo.id" type="textfield" class="form-control" v-model="todo.name" v-on:keyup.enter="update(todo)"></input></div>
+              <div v-else>{{ todo.name }}</div>
+            </td>
+            <td class="col-todo-actions">
+              <a v-if="edit_mode && edit_id == todo.id" class="btn btn-primary fa fa-save" @click="update(todo)"></a>
+              <a v-else class="btn btn-primary fa fa-edit" @click="edit(todo)" :disabled="todo.done || (edit_mode && edit_id == todo.id)"></a>
+              <a class="btn btn-danger fa fa-trash" @click="destroy(todo)"></a>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="textfield" class="form-control" placeholder="What do you need to do?" autofocus v-on:keyup.enter="create" v-model="new_todo.name"></input></td>
+            <td><a class="btn btn-primary fa fa-plus" @click="create"></a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
