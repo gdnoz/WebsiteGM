@@ -38,3 +38,7 @@
     </div>
   </div>
 </div>
+<% content_for :head do %>
+  <%= javascript_include_tag 'application', media: 'vue' %>
+  <%= javascript_include_tag 'todos' %>
+<% end %>
