@@ -65,3 +65,6 @@ gem 'font-awesome-rails'
 
 # Devise for authentication
 gem 'devise'
+
+# Rails_admin for easy content management
+gem 'rails_admin'
