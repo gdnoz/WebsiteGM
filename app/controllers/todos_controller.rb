@@ -1,9 +1,11 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:destroy, :update]
+  before_action :authenticate_admin!, except: :index
 
   def index
-    @todos = Todo.all
+    @todos = Todo.order(:id).all
     @todo = Todo.new
+
     respond_to do |format|
       format.html
       format.json { render :json => @todos }

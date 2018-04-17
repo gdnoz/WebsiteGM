@@ -58,8 +58,6 @@ window.onload = () ->
           data: 
             todo: this.new_todo
           url: '/todos/'
-          success: (res) ->
-            fetch_todos()
           error: (res) ->
             # Todo: Report the error!
         )
