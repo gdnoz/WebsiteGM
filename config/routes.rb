@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post 'todos', to: 'todos#create'
   put 'todos/:id', to: 'todos#update'
   delete 'todos/:id', to: 'todos#destroy', as: :todo
+
+  get 'sudoku', to: 'sudoku#index'
 end

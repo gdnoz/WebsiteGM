@@ -1,6 +1,6 @@
-<h1 align="center">To-do List</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3 col-sm-12">
+    <h1 align="center">To-do List</h1>
     <p class="lead">This to-do list is made using vue.js and interacts with the database using asynchronous API calls to a serverside rails controller.</p>
     <% if !admin_signed_in? %>
       <p class="lead">
@@ -8,7 +8,10 @@
         You can play around with the control but you cannot make permanent changes.
       </p>
     <% end %>
-    <div id="table-todos" class="panel panel-default">
+    <div id="loading-display">
+      <i id="loading-symbol" class="fa fa-spinner fa-spin"></i>
+    </div>
+    <div v-cloak id="table-todos" class="panel panel-default">
       <table class="table table-hover table-responsive">
         <thead> 
           <tr> 

@@ -1,0 +1,36 @@
+table {
+    margin:1em auto;
+}
+
+td {
+    width: 42px;
+    height: 42px;
+
+    border:1px solid;
+    text-align:center;
+}
+
+td:first-child {
+    border-left:solid;
+}
+
+td:nth-child(3n) {
+    border-right:solid ;
+}
+
+tr:first-child {
+    border-top:solid;
+}
+
+tr:nth-child(3n) td {
+    border-bottom:solid ;
+}
+
+input[type="text"] {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    text-align:center;
+}

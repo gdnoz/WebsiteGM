@@ -83,9 +83,11 @@ window.onload = () ->
 
   # Populate the data model
   fetch_todos = () ->
+    $("#loading-display").css("display", "block")
     $.ajax(
       url: '/todos.json'
       success: (res) ->
+        $("#loading-display").css("display", "none")
         todo_model.todos = res
     )
 
