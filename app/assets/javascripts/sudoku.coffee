@@ -27,6 +27,18 @@ window.onload = () ->
         this.busy = false
   )
 
+  shuffle = (array) ->
+    rnd_index = 0
+    tmp_value = ''
+    cur_index = array.length
+    while 0 != cur_index
+      rnd_index = Math.floor(Math.random() * cur_index);
+      cur_index -= 1;
+      tmp_value = array[cur_index]
+      array[cur_index] = array[rnd_index]
+      array[rnd_index] = tmp_value
+    return array
+
   new_cell = (num = '', valid = false, autogen = false) ->
     return {num: num, valid: valid, autogen: autogen}
 
@@ -71,21 +83,8 @@ window.onload = () ->
     sudoku_model.rows[y][x].valid = ret
     return ret
 
-  # Seeds the board with up to n random valid values
-  # TODO: Find a more efficient way to do this
-  seed = (n) ->
-    random_x = random_y = 0
-    random_num = 0
-    for i in [0..n-1]
-      random_x = Math.floor(Math.random() * 9)
-      random_y = Math.floor(Math.random() * 9)
-      random_num = Math.floor(Math.random() * 9) + 1
-      if validate_cell(random_x, random_y, random_num)
-        sudoku_model.rows[random_y][random_x].num = random_num
-        sudoku_model.rows[random_y][random_x].autogen = true
-
   # Simple backtracking solver algorithm
-  solve = (x = -1, y = 0, depth = 0) ->
+  solve = (x = -1, y = 0) ->
     x++
 
     if x > 8 # End of row
@@ -96,15 +95,15 @@ window.onload = () ->
     cell = sudoku_model.rows[y][x]
 
     if cell.num == ''
-      for num in [1..9]
+      for num in shuffle([1..9])
         sudoku_model.rows[y][x].num = num
-        if validate_cell(x, y, num) && solve(x, y, depth)
+        if validate_cell(x, y, num) && solve(x, y)
           sudoku_model.rows[y][x].autogen = true
           return true
       sudoku_model.rows[y][x].num = ''
       return false
     return false unless validate_cell(x, y, cell.num)
-    return solve(x, y, depth);
+    return solve(x, y)
 
   # Returns number of valid solutions
   num_solutions = (x = -1, y = 0, s = 0) ->
@@ -149,8 +148,6 @@ window.onload = () ->
   create_table = () ->
     sudoku_model.complete = false
     $("#loading-display").css("display", "block")
-    console.log('Seeding board...')
-    seed(20)
     console.log('Generating solution...')
     solve()
     console.log('Randomly removing values...')
