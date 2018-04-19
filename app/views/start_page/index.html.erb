@@ -1,4 +1,6 @@
-<div class="portrait"></div>
+<div id="portrait-container">
+    <img id="portrait" src="images/portrait.jpg" alt="">
+</div>
 <h1 align="center">Welcome!</h1>
 <div class="row">
     <div class="col-md-6 col-md-offset-3 col-sm-12">
@@ -26,3 +28,6 @@
         </div>
     </div>
 </div>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'start_page' %>
+<% end %>
