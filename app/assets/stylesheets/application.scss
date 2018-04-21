@@ -40,5 +40,34 @@
 }
 
 #loading-symbol {
-    font-size: 3em;
+    font-size: 2.5em;
+}
+
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+#footer ul.social li{
+	padding: 3px 0;
+}
+
+#footer ul.social li a i {
+    margin-right: 5px;
+	font-size:25px;
+}
+
+#footer ul.social li:hover a i {
+	font-size:30px;
+	margin-top:-10px;
+}
+
+#footer ul.social li a{
+	color:#777777;
+}
+
+#footer ul.social li a:hover{
+	color:#333333;
 }
