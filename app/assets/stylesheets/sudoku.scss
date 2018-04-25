@@ -1,5 +1,6 @@
 table {
-    margin:1em auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 td {
@@ -26,7 +27,7 @@ tr:nth-child(3n) td {
     border-bottom:solid ;
 }
 
-input[type="text"] {
+input[type="text"].sudoku-input {
     display: inline-block;
     width: 40px;
     height: 40px;

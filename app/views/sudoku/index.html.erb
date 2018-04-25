@@ -1,32 +1,28 @@
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-12">
-        <h1 align="center">Sudoku!</h1>
-        <p class="lead">
-            This sudoku game procedurally generates puzzles with unique solutions using a fast backtracking solver algorithm.
-            The program runs through numbers 1 through 9, in a random order, for each cell and validates it against the current state until the board is complete.
-            It then removes as many random values as possible while still having a unique solution using a modified version of the backtracking algorithm.
-        </p>
-        <div align="center">
-            <div id="table-sudoku">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary" @click="generate" :disabled="busy">Generate</button>
-                    <button type="button" class="btn btn-primary" @click="finish" :disabled="busy || complete">Solve</button>
-                </div>
-                <div id="loading-display">
-                    <i id="loading-symbol" class="fa fa-spinner fa-spin"></i>
-                </div>
-                <table v-cloak>
-                    <tbody>
-                        <tr v-for="row, y in rows">
-                            <td v-for="cell, x in row">
-                                <div v-if="complete || cell.autogen">{{ cell.num }}</div>
-                                <div v-else="complete"><input type="text" v-model="cell.num" pattern="^[0-9]$" @change="on_cell_changed(x, y, cell.num)"></input></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<h1>Sudoku!</h1>
+<p class="lead">
+    This sudoku game procedurally generates puzzles with unique solutions using a fast backtracking solver algorithm.
+    The program runs through numbers 1 through 9, in a random order, for each cell and validates it against the current state until the board is complete.
+    It then removes as many random values as possible while still having a unique solution using a modified version of the backtracking algorithm.
+</p>
+<div>
+    <div id="table-sudoku">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" @click="generate" :disabled="busy">Generate</button>
+            <button type="button" class="btn btn-primary" @click="finish" :disabled="busy || complete">Solve</button>
         </div>
+        <div id="loading-display">
+            <i id="loading-symbol" class="fa fa-spinner fa-spin"></i>
+        </div>
+        <table v-cloak>
+            <tbody>
+                <tr v-for="row, y in rows">
+                    <td v-for="cell, x in row">
+                        <div v-if="complete || cell.autogen">{{ cell.num }}</div>
+                        <div v-else="complete"><input class="sudoku-input" type="text" v-model="cell.num" pattern="^[0-9]$" @change="on_cell_changed(x, y, cell.num)"></input></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <% content_for :head do %>

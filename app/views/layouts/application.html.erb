@@ -9,15 +9,63 @@
   </head>
 
   <body>
-    <img src="images/angle.jpg" id="bg" alt="">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="todos">To-do list</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="sudoku">Sudoku!</a></li>
+              </ul>
+            </li>
+            <li><a href="cv" target="_blank">CV</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if !admin_signed_in? %>
+              <li><a href="admins/sign_in">Sign in</a></li>
+            <% else %>
+              <li><a href="cms"><%= current_admin.email %></a></li>
+              <li><a rel="nofollow" data-method="delete" href="admins/sign_out">Sign out</a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <img src="/images/hex.jpg" id="bg" alt="">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <div class="row">
+      <div id="main-content">
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
     
     <div id="footer">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
           <ul class="list-unstyled list-inline social text-center">
             <li class="list-inline-item"><a target="_blank" href="https://www.linkedin.com/in/gudni-matthiasson"><i class="fa fa-linkedin"></i></a></li>
             <li class="list-inline-item"><a target="_blank" href="https://github.com/gdnoz"><i class="fa fa-github"></i></a></li>

@@ -1,33 +1,22 @@
 <div id="portrait-container">
     <img id="portrait" src="images/portrait.jpg" alt="">
 </div>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-12">
-        <h1 align="center">Welcome!</h1>
-        <p class="lead">
-            My name is Guðni Matthíasson and this is my website.
-            I am an Icelandic software developer and Microsoft certified Dynamics AX Business Solutions Specialist.
-            I hold a BSc degree in Computer Science from Reykjavík University.
-            <br/>
-            Since graduation I have worked on the design, development, maintenance, integration and support of business solutions for <i>Microsoft Dynamics AX</i> and <i>365 for Finance & Operations</i>.
-            While working for Icelandic software company and Microsoft partner Annata, I focused primarily on their vertical automotive solution used by industry giants around the world.
-            These include (but are not limited to) Volvo Construction Equipment, Speedy Hire, Hitachi and Renault.
-            <br/>
-            I care about making good software.
-            For the past few years I have actively explored various quality control strategies to keep the output from myself and other developers usable, reliable and secure.
-            This includes mandatory code reviews, gated check-in, automated regression testing and variations on test-driven development.
-            <br/>
-            On this site you can find my CV and some of my private projects.
-        </p>
-        <div class="panel panel-default">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="cv" class="list-group-item btn">CV</a></li>
-                <li class="list-group-item"><a href="sudoku" class="list-group-item btn">Sudoku!</a></li>
-                <li class="list-group-item"><a href="todos" class="list-group-item btn">To-do list</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<h1>Welcome!</h1>
+<p class="lead">
+    My name is Guðni Matthíasson and this is my personal website.
+    I am an Icelandic software developer and Microsoft certified Dynamics AX Technology Specialist.
+    I hold a BSc degree in Computer Science from Reykjavík University.
+    <br/>
+    Since graduation I have worked on the design, development, maintenance, integration and support of business solutions for <i>Microsoft Dynamics AX</i> and <i>365 for Finance & Operations</i>.
+    For the past few years I have actively explored various quality control strategies to keep the output from myself and other developers usable, reliable and secure.
+    This includes mandatory code reviews, gated check-in, automated regression testing and variations on test-driven development.
+    <br/>
+    On a more personal note: I play the guitar and sing a bit. I enjoy board games, beer, hiking, traveling and all things science.
+    In short, I am a huge nerd.
+    <br/>
+    On this site you can find my CV and some of my private projects.
+</p>
 <% content_for :head do %>
   <%= stylesheet_link_tag 'start_page' %>
+  <%= javascript_include_tag 'application', media: 'bootstrap' %>
 <% end %>
