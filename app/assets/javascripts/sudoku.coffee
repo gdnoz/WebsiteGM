@@ -8,23 +8,30 @@ window.onload = () ->
       rows: []
     methods:
       on_cell_changed: (x, y, num) ->
-        # TODO: Better handling
         if validate_cell(x, y, num) && check_win()
           sudoku_model.complete = true
-          alert ('YOU WIN!')
+          set_notice('Congratulations! Press \'Generate\' to play again.')
       
       generate: () ->
+        start = Date.now()
         this.busy = true
         init()
         create_table()
         this.busy = false
+        duration = Date.now() - start
+        duration = '<1' if duration == 0
+        set_notice('Finished game generation in ' + duration + 'ms')
 
       finish: () ->
+        start = Date.now()
         this.busy = true
         solve()
         if check_win()
           sudoku_model.complete = true
         this.busy = false
+        duration = Date.now() - start
+        duration = '<1' if duration == 0
+        set_notice('Completed game in ' + duration + 'ms')
   )
 
   shuffle = (array) ->

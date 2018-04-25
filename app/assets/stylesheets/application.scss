@@ -21,6 +21,48 @@
     margin-left: 20px;
 }
 
+#notifications-container {
+    position: relative;
+}
+
+#notifications {
+    position: absolute;
+    margin-top: -20px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+    height: 30px;
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.alert:empty {
+    display: none;
+}
+
+.notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+    height: 30px;
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+ 
+.notice:empty {
+    display: none;
+}
+
 .row {
     width: 100%;
 }

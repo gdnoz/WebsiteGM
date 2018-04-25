@@ -14,3 +14,19 @@
 //= require jquery
 //= require vue
 //= require bootstrap
+
+timeout_flash = function(){};
+
+set_flash = function(id, msg){
+    $(id).text(msg);
+    clearTimeout(timeout_flash);
+    timeout_flash = setTimeout(function(){ $(id).text(''); }, 5000);
+};
+
+set_alert = function(msg){
+    set_flash('#flash-alert', msg);
+};
+
+set_notice = function(msg){
+    set_flash('#flash-notice', msg);
+};
