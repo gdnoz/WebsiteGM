@@ -17,7 +17,7 @@
             <tr v-for="row, y in rows">
                 <td v-for="cell, x in row">
                     <div v-if="complete || cell.autogen">{{ cell.num }}</div>
-                    <div v-else="complete"><input class="sudoku-input" type="text" v-model="cell.num" pattern="^[0-9]$" @change="on_cell_changed(x, y, cell.num)"></input></div>
+                    <div v-else="complete"><input class="form-control sudoku-input" type="text" v-model="cell.num" pattern="^[0-9]$" @change="on_cell_changed(x, y, cell.num)"></input></div>
                 </td>
             </tr>
         </tbody>
