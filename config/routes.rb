@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   delete 'todos/:id', to: 'todos#destroy', as: :todo
   get 'sudoku', to: 'sudoku#index'
   get 'music', to: 'music#index'
+  get 'dice', to: 'dice#index'
 end

@@ -1,0 +1,42 @@
+<h1>Dice Roller</h1>
+<p class="lead">
+    I made a dice-rolling utility. Enjoy!
+</p>
+
+<div align="center" id="table-dice">
+  <div id="dice-roller">
+    <div align="center">
+      <input v-model="num" type="number" min="1" max="999" class="form-control dice-num" @keyup.enter="roll">
+      d
+      <input v-model="sides" type="number" min="1" max="100" class="form-control dice-num" @keyup.enter="roll">
+      <button type="button" class="btn btn-primary" @click="roll">Roll!</button>
+      <button type="button" class="btn btn-danger" @click="clear_history">Clear</button>
+    </div>
+
+    <ul id="dice-results" class="list-inline">
+      <li v-for="result in results"><input type="text" v-model="result.num" class="form-control dice-result" readonly></li>
+    </ul>
+  </div>
+
+  <h2 v-if="history.length > 0">History</h2>
+  <div id="history-list">
+    <div class="list-group">
+      <button v-for="h, i in history" type="button" class="list-group-item list-group-item-action" v-bind:class="{ active: i == selected_history}" @click="select_history(i)">
+        <div class="d-flex w-100 justify-content-between">
+          <h4 class="mb-1">{{h.num}}d{{h.sides}} &#8594; {{h.total}}</h4>
+        </div>
+        <p class="mb-1">
+          <span v-for="result, j in h.results">
+            {{result.num}}<span v-if="j < h.results.length - 1">, </span>
+          </span>
+        </p>
+      </button>
+    </div>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'application', media: 'bootstrap' %>
+  <%= javascript_include_tag 'dice' %>
+  <%= stylesheet_link_tag 'dice' %>
+<% end %>

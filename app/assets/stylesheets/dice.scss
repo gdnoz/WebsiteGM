@@ -1,0 +1,19 @@
+.dice-num {
+    width: 64pt;
+    display: inline;
+}
+
+#table-dice {
+    width: 100%;
+    text-align: left;
+}
+
+input[type="text"].dice-result {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+
+    border: none;
+    text-align: center;
+}
