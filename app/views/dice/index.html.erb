@@ -22,14 +22,10 @@
   <div id="history-list">
     <div class="list-group">
       <button v-for="h, i in history" type="button" class="list-group-item list-group-item-action" v-bind:class="{ active: i == selected_history}" @click="select_history(i)">
-        <div class="d-flex w-100 justify-content-between">
-          <h4 class="mb-1">{{h.num}}d{{h.sides}} &#8594; {{h.total}}</h4>
-        </div>
-        <p class="mb-1">
-          <span v-for="result, j in h.results">
-            {{result.num}}<span v-if="j < h.results.length - 1">, </span>
-          </span>
-        </p>
+        <span class="bold-text">{{h.num}}d{{h.sides}} &#8594; {{h.total}}: </span>
+        <span v-for="result, j in h.results">
+          {{result.num}}<span v-if="j < h.results.length - 1">, </span>
+        </span>
       </button>
     </div>
   </div>
