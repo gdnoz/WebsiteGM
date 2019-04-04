@@ -9,6 +9,8 @@
       <input v-model="num" type="number" min="1" max="999" class="form-control dice-num" @keyup.enter="roll">
       d
       <input v-model="sides" type="number" min="1" max="100" class="form-control dice-num" @keyup.enter="roll">
+      +
+      <input v-model="modifier" type="number" class="form-control dice-num" @keyup.enter="roll">
       <button type="button" class="btn btn-primary" @click="roll">Roll!</button>
       <button type="button" class="btn btn-danger" @click="clear_history">Clear</button>
     </div>
@@ -22,7 +24,7 @@
   <div id="history-list">
     <div class="list-group">
       <button v-for="h, i in history" type="button" class="list-group-item list-group-item-action" v-bind:class="{ active: i == selected_history}" @click="select_history(i)">
-        <span class="bold-text">{{h.num}}d{{h.sides}} &#8594; {{h.total}}<span v-if="h.num > 1">: </span></span>
+        <span class="bold-text">{{h.num}}d{{h.sides}}<span v-if="h.modifier != 0"> + {{modifier}} </span> &#8594; {{h.total}}<span v-if="h.num > 1">: </span></span>
         <span v-if="h.num > 1" v-for="result, j in h.results">
           {{result.num}}<span v-if="j < h.results.length - 1">, </span>
         </span>
