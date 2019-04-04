@@ -17,7 +17,7 @@ window.onload = () ->
         dice_model.results = []
         n = dice_model.num
         while n > 0
-          dice_model.results.push(new_result(roll_die(dice_model.sides, dice_model.modifier)))
+          dice_model.results.push(new_result(roll_die(dice_model.sides)))
           n--
         dice_model.history.unshift(new_history(dice_model.sides, dice_model.num, dice_model.modifier, dice_model.results))
         dice_model.selected_history = 0
@@ -38,20 +38,20 @@ window.onload = () ->
         dice_model.history = []
   )
 
-  roll_die = (max, modifier) ->
-    return Math.floor(Math.random() * max + 1) + (modifier * 1)
+  roll_die = (max) ->
+    return Math.floor(Math.random() * max + 1)
 
   new_result = (num) ->
     return {num: num}
 
   new_history = (sides, num, modifier, results) ->
-    return {sides: sides, num: num, modifier: modifier, results: results, total: get_sum(results)}
+    return {sides: sides, num: num, modifier: modifier, results: results, total: get_sum(results, modifier)}
   
-  get_sum = (list) ->
+  get_sum = (list, modifier) ->
     ret = 0
     for value in list
       ret += value.num
-    return ret
+    return ret + (modifier * 1)
 
   validate = (num, sides, modifier) ->
     ret = true
