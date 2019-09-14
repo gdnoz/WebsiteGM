@@ -10,6 +10,14 @@ window.onload = () ->
       selected_history: -1
       history: []
 
+      # Statistics
+      stat_min: 1
+      stat_max: 20
+      stat_exp: 11
+      stat_avg: 0.0
+      stat_med: 0.0
+      stat_std: 0.0
+
     methods:
       roll: () ->
         if !validate(dice_model.num, dice_model.sides, dice_model.modifier)
@@ -19,6 +27,7 @@ window.onload = () ->
         while n > 0
           dice_model.results.push(new_result(roll_die(dice_model.sides)))
           n--
+        dice_model.update_stats()
         dice_model.history.unshift(new_history(dice_model.sides, dice_model.num, dice_model.modifier, dice_model.results))
         dice_model.selected_history = 0
         $('#history-list').scrollTop(0)
@@ -30,13 +39,43 @@ window.onload = () ->
         dice_model.modifier = item.modifier
         dice_model.results = item.results
         dice_model.selected_history = idx
+        dice_model.update_exp()
+        dice_model.update_stats()
 
       clear_history: () ->
         dice_model.results = []
         dice_model.result_string = ''
         dice_model.selected_history = -1
         dice_model.history = []
+
+      update_exp: () ->
+        if !validate(dice_model.num, dice_model.sides, dice_model.modifier)
+          return
+        dice_model.stat_min = (dice_model.num*1) + (dice_model.modifier*1)
+        dice_model.stat_max = (dice_model.num*1) * (dice_model.sides*1) + (dice_model.modifier*1)
+        dice_model.stat_exp = Math.round((dice_model.stat_max - dice_model.stat_min) / 2 + dice_model.stat_min)
+
+      update_stats: () ->
+        dice_model.stat_avg = average(dice_model.results)
+        dice_model.stat_med = median(dice_model.results)
+        dice_model.stat_std = stdev(dice_model.results, dice_model.stat_exp, dice_model.sides, dice_model.num)
   )
+
+  average = (values) ->
+    sum = 0
+    for value in values
+      sum += value.num
+    return sum / values.length
+
+  median = (values) ->
+    values.sort();
+    return values[Math.round(values.length / 2) - 1].num
+
+  stdev = (values, exp, sides, num) ->
+    return 0
+
+  variance = (value, exp, sides) ->
+    return 0
 
   roll_die = (max) ->
     return Math.floor(Math.random() * max + 1)

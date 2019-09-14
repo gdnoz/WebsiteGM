@@ -6,18 +6,26 @@
 <div align="center" id="table-dice">
   <div id="dice-roller">
     <div align="center">
-      <input v-model="num" type="number" min="1" max="999" class="form-control dice-num" @keyup.enter="roll">
+      <input v-model="num" type="number" min="1" max="999" class="form-control dice-num" @keyup.enter="roll" @change="update_exp">
       d
-      <input v-model="sides" type="number" min="1" max="100" class="form-control dice-num" @keyup.enter="roll">
+      <input v-model="sides" type="number" min="1" max="100" class="form-control dice-num" @keyup.enter="roll" @change="update_exp">
       +
-      <input v-model="modifier" type="number" class="form-control dice-num" @keyup.enter="roll">
+      <input v-model="modifier" type="number" class="form-control dice-num" @keyup.enter="roll" @change="update_exp">
       <button type="button" class="btn btn-primary" @click="roll">Roll!</button>
       <button type="button" class="btn btn-danger" @click="clear_history">Clear</button>
     </div>
 
+    <small>
+      min = {{stat_min}}, max = {{stat_max}}, exp = {{stat_exp}}
+    </small>
+
     <ul id="dice-results" class="list-inline">
       <li v-for="result in results"><input type="text" v-model="result.num" class="form-control dice-result" readonly></li>
     </ul>
+
+    <small v-if="results.length > 0">
+      avg = {{stat_avg}}, med = {{stat_med}}, std = {{stat_std}}
+    </small>
   </div>
 
   <h2 v-if="history.length > 0">History</h2>
