@@ -12,8 +12,10 @@ default: &default
 development:
   <<: *default
   database: db/devdb
-  username: postgres
-  password: 9Hh1TqYmXY5b
+  username: gmatt
+  password: mQF@0E681zNifmF9
+  pool: 5
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,8 +23,8 @@ development:
 test:
   <<: *default
   database: db/testdb
-  username: postgres
-  password: 9Hh1TqYmXY5b
+  username: gmatt
+  password: mQF@0E681zNifmF9
 
 production:
   <<: *default
