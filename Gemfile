@@ -19,7 +19,11 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
-gem 'sassc'
+#gem 'sassc'
+gem 'sassc', '~> 2.0', '>= 2.0.1'
+gem 'sprockets', '~> 3.7.2'
+gem 'sass-rails', '~> 5.1.0 ' 
+gem 'concurrent-ruby',  '~>1.1.5'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
