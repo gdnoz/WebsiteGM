@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby "3.0.1"
+ruby "3.0.2"
 
 # Fix for potential XSS vulnerability GHSA-65cv-r6x7-79hv
 gem "actionview", ">= 5.2.4.2"
