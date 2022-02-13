@@ -12,6 +12,7 @@ gem "actionview", ">= 5.2.4.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.1.3'
+gem 'actionpack', '>= 6.1.4.6'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use Postgres for Heroku
