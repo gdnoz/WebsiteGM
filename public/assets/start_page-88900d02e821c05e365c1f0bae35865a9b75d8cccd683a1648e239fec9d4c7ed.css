@@ -1,0 +1,10 @@
+#portrait-container {
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center; }
+
+#portrait {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%; }
